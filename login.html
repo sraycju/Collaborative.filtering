@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>Body Shape Calculator</title>
+	</head>
+	<style media="screen">
+		body{
+			margin: 0;
+			padding: 0;
+			text-align: center;
+			font-family: sans-serif;
+			background-image: linear-gradient(120deg,#ff6b6b, #5f27cd);
+			min-height: 100vh;
+		}
+		div{
+			width: 500px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			background-color: #fff;
+			transform: translate(-50%, -50%);
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 1px 1px 20px #ee5253;
+		}
+		h2{
+			font-size: 30px;
+			font-weight: 600;
+		}
+		.text{
+			text-align: left;
+			margin-left: 150px;
+		}
+		#w, #h{
+			color: #222f3e;
+			text-align: left;
+			font-size: 20px;
+			font-weight: 200;
+			outline: none;
+			border: none;
+			background: none;
+			border-bottom: 1px solid #341f97;
+			width: 200px;
+		}
+			#w:focus, #h:focus{
+				border-bottom: 2px solid #341f97;
+				width: 300px;
+				transition: 0.5s;
+			}
+			#result{
+				color: #341f97;
+			}
+			#btn{
+				font-family: inherit;
+				margin-top: 10px;
+				border: none;
+				color: #fff;
+				background-image: linear-gradient(120deg,#ff6b6b, #5f27cd);
+				width: 150px;
+				padding: 10px;
+				border-radius: 30px;
+				outline: none;
+				cursor: pointer;
+			}
+			#btn:hover{
+				box-shadow: 1px 1px 10px #341f97;
+			}
+			#info{
+				font-size: 12px;
+				font-family: inherit;
+			}
+	</style>
+	<script type="text/javascript">
+		function BMI() {
+			var shld=document.getElementById('shld').value;
+            var bst=document.getElementById('bst').value;
+            var wst=document.getElementById('wst').value;
+            var hip=document.getElementById('hip').value;
+            if((bst - hip) >= 3.6 && (bst - wst) < 9)
+                {
+                    document.getElementById("result").innerHTML="Your Body Shape is Inverted Triangle" ;
+                }
+                
+            else if((hip - bst) >= 3.6 && (hip - wst) < 9)
+                {
+                    document.getElementById("result").innerHTML="Your Body Shape is Triangle";
+                }
+                
+            else if((his - bst) < 3.6 && (bst - hip) < 3.6 && (bst - wst) < 9 && (hip - wst) < 10)
+                {
+                    document.getElementById("result").innerHTML="Your Body Shape is Rectangle";
+                }
+            else if((bst - hip) <= 1 && (hip - bst) < 3.6 && (bst - wst) >= 9 || (hip - wst) >= 10)
+            {
+                document.getElementById("result").innerHTML="Your Body Shape is Hour-glass";
+            }
+            else{
+                document.getElementById("result").innerHTML="Body Shape not found";
+            }
+		}
+	</script>
+	<body>
+		<div>
+			<h2>Body Shape Calculator</h2>
+			<p class="text">Shoulder</p>
+			<input type="text" id="shld">
+			<p class="text">Bust</p>
+            <input type="text" id="bst">
+            <p class="text">Waist</p>
+            <input type="text" id="wst">
+            <p class="text">Hip</p>
+            <input type="text" id="hip"><br>
+            <button id="btn" onClick="BMI()">Calculate</button>
+			<p id="result"></p>
+			<p id="info">Please enter all measurements in inches</p>
+		</div>
+	</body>
+</html>
